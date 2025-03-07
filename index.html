@@ -9,20 +9,43 @@
       font-family: 'Arial', sans-serif;
       margin: 0;
       padding: 0;
-      background-color: #f7f7f7;
+      background-color: #e8f5e9;
       color: #333;
     }
 
     header {
-      background-color: #4CAF50;
+      background-color: #2e7d32;
       color: white;
       text-align: center;
       padding: 20px;
+      position: relative;
     }
 
-    h1 {
-      margin: 0;
-      font-size: 2em;
+    .menu-toggle {
+      position: absolute;
+      left: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+      font-size: 24px;
+      display: none;
+    }
+
+    .menu {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .menu a {
+      color: white;
+      text-decoration: none;
+      font-size: 1.2em;
+      transition: color 0.3s;
+    }
+
+    .menu a:hover {
+      color: #c8e6c9;
     }
 
     .container {
@@ -51,25 +74,42 @@
       color: #666;
     }
 
-    /* Responsive design */
-    @media (max-width: 600px) {
-      .container {
-        padding: 15px;
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
       }
-
-      h1 {
-        font-size: 1.5em;
+      
+      .menu {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background-color: #2e7d32;
+        text-align: center;
+        padding: 10px 0;
       }
-
-      .story {
-        font-size: 1em;
+      
+      .menu a {
+        display: block;
+        padding: 10px 0;
+      }
+      
+      .menu.active {
+        display: flex;
       }
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>🪰 Joyeux Anniversaire Foss ! 🪰</h1>
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+    <nav class="menu">
+      <a href="dette.html">Dette</a>
+      <a href="photos.html">Photo</a>
+    </nav>
+    <h1>🎉 Joyeux Anniversaire Foss ! 🎉</h1>
   </header>
 
   <div class="container">
@@ -86,5 +126,11 @@
     <p>Médites, apprends de cette histoire, et intègre cette leçon dans ta vie.</p>
     <p>Nékkal si Djamb petite fille🌿</p>
   </div>
+
+  <script>
+    function toggleMenu() {
+      document.querySelector('.menu').classList.toggle('active');
+    }
+  </script>
 </body>
 </html>
