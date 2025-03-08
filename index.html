@@ -3,133 +3,95 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Joyeux Anniversaire Foss</title>
+  <title>Connexion</title>
   <style>
     body {
       font-family: 'Arial', sans-serif;
       margin: 0;
       padding: 0;
-      background-color: #e8f5e9;
-      color: #333;
-    }
-
-    header {
-      background-color: #2e7d32;
-      color: white;
-      text-align: center;
-      padding: 20px;
-      position: relative;
-    }
-
-    .menu-toggle {
-      position: absolute;
-      left: 20px;
-      top: 50%;
-      transform: translateY(-50%);
-      cursor: pointer;
-      font-size: 24px;
-      display: none;
-    }
-
-    .menu {
+      background-color: #f7f7f7;
       display: flex;
       justify-content: center;
-      gap: 20px;
-    }
-
-    .menu a {
-      color: white;
-      text-decoration: none;
-      font-size: 1.2em;
-      transition: color 0.3s;
-    }
-
-    .menu a:hover {
-      color: #c8e6c9;
+      align-items: center;
+      height: 100vh;
     }
 
     .container {
-      max-width: 800px;
-      margin: 20px auto;
+      text-align: center;
+      background: white;
       padding: 20px;
-      background-color: white;
       border-radius: 10px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
 
-    .story {
+    input {
+      padding: 10px;
+      margin: 10px 0;
       font-size: 1.2em;
-      line-height: 1.6;
-      margin-top: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
     }
 
-    .story p {
-      margin-bottom: 15px;
+    button {
+      padding: 10px 20px;
+      font-size: 1.2em;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
     }
 
-    .footer {
-      text-align: center;
-      margin-top: 30px;
-      font-size: 1em;
-      color: #666;
+    .hidden {
+      display: none;
     }
 
-    @media (max-width: 768px) {
-      .menu-toggle {
-        display: block;
-      }
-      
-      .menu {
-        display: none;
-        flex-direction: column;
-        position: absolute;
-        top: 60px;
-        left: 0;
-        width: 100%;
-        background-color: #2e7d32;
-        text-align: center;
-        padding: 10px 0;
-      }
-      
-      .menu a {
-        display: block;
-        padding: 10px 0;
-      }
-      
-      .menu.active {
-        display: flex;
-      }
+    .celebration {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #4CAF50;
+      color: white;
+      padding: 15px 30px;
+      border-radius: 5px;
+      font-size: 1.2em;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      animation: fadeOut 2s ease-in-out forwards;
+    }
+
+    @keyframes fadeOut {
+      0% { opacity: 1; }
+      80% { opacity: 1; }
+      100% { opacity: 0; }
     }
   </style>
 </head>
 <body>
-  <header>
-    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
-    <nav class="menu">
-      <a href="dette.html">Dette</a>
-      <a href="photos.html">Photo</a>
-    </nav>
-    <h1>🎉🪰 HBD FOSS ! 🪰🎉</h1>
-  </header>
-
   <div class="container">
-    <h2>Une histoire inspirante pour toi :</h2>
-    <div class="story">
-      <p><strong>L'histoire du bambou et du chêne</strong></p>
-      <p>Il était une fois, dans une forêt, un petit bambou et un grand chêne. Le bambou, fragile et tout jeune, se sentait souvent faible par rapport à l'immense chêne. Un jour, une violente tempête souffla sur la forêt. Le chêne, fort et imposant, résista fièrement aux rafales de vent. Mais, alors que la tempête faisait rage, une branche du chêne se brisa sous la pression. Le bambou, quant à lui, se pencha et se courba sous le vent, mais ne se brisa pas.</p>
-      <p>Le lendemain, après la tempête, le bambou se redressa et observa le chêne. Il avait résisté, mais il était désormais abîmé. Le bambou, quant à lui, était toujours intact.</p>
-      <p>Le bambou se rendit compte que, parfois, c’est dans la souplesse et la persévérance qu’on trouve la véritable force. Peu importe les tempêtes de la vie, il ne faut jamais se décourager. Parfois, se plier permet de mieux résister.</p>
-    </div>
+    <h2>Entrez le code d'accès</h2>
+    <input type="password" id="code" placeholder="Code">
+    <button onclick="verifierCode()">Valider</button>
   </div>
 
-  <div class="footer">
-    <p>Médites, apprends de cette histoire, et intègre cette leçon dans ta vie.</p>
-    <p>Nékkal si Djamb petite fille🌿</p>
+  <div id="celebration" class="celebration hidden">
+    🎉 Nicee fillss ! 🪰 Bienvenuee 🪰 !
   </div>
 
   <script>
-    function toggleMenu() {
-      document.querySelector('.menu').classList.toggle('active');
+    function verifierCode() {
+      const codeCorrect = "4439";
+      const codeSaisi = document.getElementById("code").value;
+      
+      if (codeSaisi === codeCorrect) {
+        const celebration = document.getElementById("celebration");
+        celebration.classList.remove("hidden");
+        setTimeout(() => {
+          window.location.href = "accueil.html";
+        }, 2000);
+      } else {
+        alert("Incorrect. Pourtant c'est pas difficile ! Bandit deug trouver neu bi yag");
+      }
     }
   </script>
 </body>
