@@ -76,12 +76,12 @@
   </style>
 </head>
 <body>
-  <div id="form">
+  <div id="form1">
     <img src="img/Darwin.png" alt="darwin" id="darwin">
     <img src="img/gumball.png" alt="regarde suspect">
   </div>
   <img src="img/win.png" alt="" class="win hidden" >
-  <div class="container" id="form">
+  <div class="container" id="form2">
     <h2>Entrez le code d'accès</h2>
     <input type="password" id="code" placeholder="Code">
     <button onclick="verifierCode()">Valider</button>
@@ -96,12 +96,16 @@
     function verifierCode() {
       const codeCorrect = "4439";
       const codeSaisi = document.getElementById("code").value;
-      const win = document.querySelector(".win")
+      const win = document.querySelector(".win");
+      const form1 = document.querySelector("#form1");
+      const form2 = document.querySelector("#form2")
       
       if (codeSaisi === codeCorrect) {
         const celebration = document.getElementById("celebration");
         celebration.classList.remove("hidden");
         win.classList.remove("hidden")
+        form1.classList.add("hidden")
+        form2.classList.add("hidden")
         setTimeout(() => {
           window.location.href = "accueil.html";
         }, 2000);
