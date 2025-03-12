@@ -7,10 +7,11 @@
   <style>
     img {
       width: 20vh;
-      
-  
     }
-    
+   .win{
+    position: absolute;
+    width: 60vh;
+   } 
     body {
       font-family: 'Arial', sans-serif;
       margin: 0;
@@ -75,8 +76,12 @@
   </style>
 </head>
 <body>
-  <img src="img/Darwin.png" alt="darwin" id="darwin">
-  <div class="container">
+  <div id="form">
+    <img src="img/Darwin.png" alt="darwin" id="darwin">
+    <img src="img/gumball.png" alt="regarde suspect">
+  </div>
+  <img src="img/win.png" alt="" class="win hidden" >
+  <div class="container" id="form">
     <h2>Entrez le code d'accès</h2>
     <input type="password" id="code" placeholder="Code">
     <button onclick="verifierCode()">Valider</button>
@@ -85,16 +90,18 @@
   <div id="celebration" class="celebration hidden">
     🎉 Nicee fillss ! 🪰 Bienvenue 🪰 !
   </div>
-  <img src="img/gumball.png" alt="regarde suspect">
+  
 
   <script>
     function verifierCode() {
       const codeCorrect = "4439";
       const codeSaisi = document.getElementById("code").value;
+      const win = document.querySelector(".win")
       
       if (codeSaisi === codeCorrect) {
         const celebration = document.getElementById("celebration");
         celebration.classList.remove("hidden");
+        win.classList.remove("hidden")
         setTimeout(() => {
           window.location.href = "accueil.html";
         }, 2000);
